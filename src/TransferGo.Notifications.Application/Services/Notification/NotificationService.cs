@@ -47,11 +47,21 @@ public class NotificationService : INotificationService
         switch (notification.Channel)
         {
             case Channel.Sms:
-                await SendSms(notification);
+                await Send(
+                    notification,
+                    _smsProviders,
+                    service => service.SendSms(notification.PhoneNumber, notification.PhoneMessage)
+                );
+                
                 break;
 
             case Channel.Email:
-                await SendEmail(notification);
+                await Send(
+                    notification,
+                    _emailProviders,
+                    service => service.SendEmail(notification.EmailAddress, notification.EmailSubject, notification.EmailBody)
+                );
+
                 break;
 
             default:
@@ -61,24 +71,28 @@ public class NotificationService : INotificationService
         await _notificationRepository.UpdateNotification(notification);
     }
     
-    private async Task SendSms(Domain.Entities.Notification notification)
+    private async Task Send<TService>(
+        Domain.Entities.Notification notification,
+        Dictionary<string, TService> serviceProviders,
+        Func<TService, Task> sendAction)
     {
-        if (!_notificationOptions.TryGetValue(notification.Channel.ToString(), out var smsChannel) || !smsChannel.Enabled)
+        var channelKey = notification.Channel.ToString();
+
+        if (!_notificationOptions.TryGetValue(channelKey, out var channelOptions) || !channelOptions.Enabled)
         {
             notification.SetError();
             await _notificationRepository.UpdateNotification(notification);
             
-            throw new InvalidOperationException("SMS channel is disabled.");
+            throw new InvalidOperationException($"{channelKey} channel is disabled.");
         }
-        
-        foreach (var provider in GetActiveProviders(smsChannel))
+
+        foreach (var provider in GetActiveProviders(channelOptions))
         {
             try
             {
-                if (_smsProviders.TryGetValue(provider.Name, out var service))
+                if (serviceProviders.TryGetValue(provider.Name, out var service))
                 {
-                    await _retryPolicy.ExecuteAsync(() => 
-                        service.SendSms(notification.PhoneNumber, notification.PhoneMessage));
+                    await _retryPolicy.ExecuteAsync(() => sendAction(service));
                     
                     notification.SetCompleted();
                     
@@ -87,48 +101,13 @@ public class NotificationService : INotificationService
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"SMS provider {provider.Name} failed: {ex.Message}");
+                Console.WriteLine($"{channelKey} provider {provider.Name} failed: {ex.Message}");
             }
         }
 
         notification.SetError();
         
-        throw new Exception("All SMS providers failed.");
-    }
-
-    private async Task SendEmail(Domain.Entities.Notification notification)
-    {
-        if (!_notificationOptions.TryGetValue(notification.Channel.ToString(), out var emailChannel) || !emailChannel.Enabled)
-        {
-            notification.SetError();
-            await _notificationRepository.UpdateNotification(notification);
-
-            throw new InvalidOperationException("Email channel is disabled.");
-        }
-
-        foreach (var provider in GetActiveProviders(emailChannel))
-        {
-            try
-            {
-                if (_emailProviders.TryGetValue(provider.Name, out var service))
-                {
-                    await _retryPolicy.ExecuteAsync(() => 
-                        service.SendEmail(notification.EmailAddress, notification.EmailSubject, notification.EmailBody));
-                    
-                    notification.SetCompleted();
-                    
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Email provider {provider.Name} failed: {ex.Message}");
-            }
-        }
-
-        notification.SetError();
-        
-        throw new Exception("All email providers failed.");
+        throw new Exception($"All {channelKey} providers failed.");
     }
     
     private static IEnumerable<ProviderOptions> GetActiveProviders(ChannelOptions channelOptions)
