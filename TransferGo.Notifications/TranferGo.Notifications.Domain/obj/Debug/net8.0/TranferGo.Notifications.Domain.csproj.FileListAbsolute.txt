@@ -1,0 +1,12 @@
+D:\Users\Desktop\DEV\Workplace\TransferGo.Notifications\TransferGo.Notifications\TranferGo.Notifications.Domain\bin\Debug\net8.0\TranferGo.Notifications.Domain.deps.json
+D:\Users\Desktop\DEV\Workplace\TransferGo.Notifications\TransferGo.Notifications\TranferGo.Notifications.Domain\bin\Debug\net8.0\TranferGo.Notifications.Domain.dll
+D:\Users\Desktop\DEV\Workplace\TransferGo.Notifications\TransferGo.Notifications\TranferGo.Notifications.Domain\bin\Debug\net8.0\TranferGo.Notifications.Domain.pdb
+D:\Users\Desktop\DEV\Workplace\TransferGo.Notifications\TransferGo.Notifications\TranferGo.Notifications.Domain\obj\Debug\net8.0\TranferGo.Notifications.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\Desktop\DEV\Workplace\TransferGo.Notifications\TransferGo.Notifications\TranferGo.Notifications.Domain\obj\Debug\net8.0\TranferGo.Notifications.Domain.AssemblyInfoInputs.cache
+D:\Users\Desktop\DEV\Workplace\TransferGo.Notifications\TransferGo.Notifications\TranferGo.Notifications.Domain\obj\Debug\net8.0\TranferGo.Notifications.Domain.AssemblyInfo.cs
+D:\Users\Desktop\DEV\Workplace\TransferGo.Notifications\TransferGo.Notifications\TranferGo.Notifications.Domain\obj\Debug\net8.0\TranferGo.Notifications.Domain.csproj.CoreCompileInputs.cache
+D:\Users\Desktop\DEV\Workplace\TransferGo.Notifications\TransferGo.Notifications\TranferGo.Notifications.Domain\obj\Debug\net8.0\TranferGo.Notifications.Domain.sourcelink.json
+D:\Users\Desktop\DEV\Workplace\TransferGo.Notifications\TransferGo.Notifications\TranferGo.Notifications.Domain\obj\Debug\net8.0\TranferGo.Notifications.Domain.dll
+D:\Users\Desktop\DEV\Workplace\TransferGo.Notifications\TransferGo.Notifications\TranferGo.Notifications.Domain\obj\Debug\net8.0\refint\TranferGo.Notifications.Domain.dll
+D:\Users\Desktop\DEV\Workplace\TransferGo.Notifications\TransferGo.Notifications\TranferGo.Notifications.Domain\obj\Debug\net8.0\TranferGo.Notifications.Domain.pdb
+D:\Users\Desktop\DEV\Workplace\TransferGo.Notifications\TransferGo.Notifications\TranferGo.Notifications.Domain\obj\Debug\net8.0\ref\TranferGo.Notifications.Domain.dll

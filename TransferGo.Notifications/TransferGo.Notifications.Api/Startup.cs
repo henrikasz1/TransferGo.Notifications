@@ -1,29 +1,41 @@
-namespace TransferGo.Notifications.Api;
+using System.Text.Json.Serialization;
+using Hangfire;
+using Microsoft.EntityFrameworkCore;
+using TranferGo.Notifications.Infrastructure.Persistence;
+using TransferGo.Notifications.Extensions;
+
+namespace TransferGo.Notifications;
 
 public class Startup
 {
-    public IConfiguration Configuration { get; }
+    private readonly IConfiguration _configuration;
 
     public Startup(IConfiguration configuration)
     {
-        Configuration = configuration;
+        _configuration = configuration;
     }
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddControllers();
+        services.AddControllers()
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
 
         // Add Swagger
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
-
-        // TODO: Add RabbitMQ, EF Core, etc.
+        
+       services.AddDependencies(_configuration as IConfigurationRoot);
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
         app.UseSwagger();
         app.UseSwaggerUI();
+        
+        app.UseHangfireDashboard();
 
         app.UseRouting();
         app.UseAuthorization();
@@ -32,5 +44,14 @@ public class Startup
         {
             endpoints.MapControllers();
         });
+        
+        if (env.IsDevelopment())
+        {
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
+                dbContext.Database.Migrate(); // Apply migrations only in development
+            }
+        }
     }
 }

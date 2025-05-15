@@ -1,4 +1,4 @@
-namespace TranferGo.Notifications.Application.Queries.GetUserNotifications.Contracts.Enums;
+namespace TranferGo.Notifications.Application.Common.Enums;
 
 public enum State
 {

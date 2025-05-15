@@ -1,8 +1,7 @@
-namespace TranferGo.Notifications.Application.Queries.GetUserNotifications.Contracts.Enums;
+namespace TranferGo.Notifications.Application.Common.Enums;
 
 public enum Channel
 {
     Sms = 1,
-    Email,
-    PushNotification
+    Email
 }

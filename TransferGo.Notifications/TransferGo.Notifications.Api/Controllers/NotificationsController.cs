@@ -1,26 +1,47 @@
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TranferGo.Notifications.Application.Commands.SendNotification.Contracts;
+using TranferGo.Notifications.Application.Queries.GetUserNotifications.Contracts;
 
-namespace TransferGo.Notifications.Api.Controllers;
+namespace TransferGo.Notifications.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
 public class NotificationsController : ControllerBase
 {
-    private readonly AppDbContext _context;
+    private readonly IMediator _mediator;
 
-    public NotificationsController(AppDbContext context)
+    public NotificationsController(IMediator mediator)
     {
-        _context = context;
+        _mediator = mediator;
     }
 
-    [HttpGet]
-    public ActionResult<IEnumerable<Product>> GetAll() => _context.Products.ToList();
-
-    [HttpPost]
-    public IActionResult Add(Product product)
+    [HttpPost("send")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> SendNotification([FromBody] SendNotificationCommand command)
     {
-        _context.Products.Add(product);
-        _context.SaveChanges();
-        return CreatedAtAction(nameof(GetAll), product);
+        await _mediator.Send(command);
+
+        return Ok();
+    }
+
+    [HttpGet("user-notifications/{userId:guid}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> GetUserNotifications([FromRoute] Guid userId)
+    {
+        var result = await _mediator.Send(new GetUserNotificationsQuery
+        {
+            UserId = userId
+        });
+
+        if (result.Count == 0)
+        {
+            return NotFound();
+        }
+        
+        return Ok(result);
     }
 }

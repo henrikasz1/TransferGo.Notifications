@@ -1,8 +1,21 @@
 using MediatR;
+using TranferGo.Notifications.Application.Common.Enums;
 
 namespace TranferGo.Notifications.Application.Commands.SendNotification.Contracts;
 
-public class SendNotificationRequest : IRequest
+public class SendNotificationCommand : IRequest
 {
+    public Guid UserId { get; set; }
     
+    public string EmailAddress { get; set; }
+
+    public string EmailSubject { get; set; }
+
+    public string EmailBody { get; set; }
+
+    public string PhoneNumber { get; set; }
+
+    public string PhoneMessage { get; set; }
+    
+    public Channel Channel { get; set; }
 }

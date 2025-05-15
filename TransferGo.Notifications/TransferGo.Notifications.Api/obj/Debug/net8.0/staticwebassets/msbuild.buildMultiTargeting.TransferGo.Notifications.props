@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\TransferGo.Notifications.props" />
+</Project>

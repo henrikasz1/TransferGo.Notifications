@@ -1,6 +1,3 @@
 namespace TranferGo.Notifications.Application.Services.Options;
 
-public class NotificationOptions
-{
-    
-}
+public class NotificationOptions : Dictionary<string, ChannelOptions>;
