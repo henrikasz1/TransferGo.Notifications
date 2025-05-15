@@ -1,10 +1,9 @@
-using TransferGo.Notifications.Application.Commands.SendNotification.Contracts;
-using TransferGo.Notifications.Application.Queries.GetUserNotifications.Contracts;
-
 namespace TransferGo.Notifications.Controllers;
 
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Application.Commands.SendNotification.Contracts;
+using Application.Queries.GetUserNotifications.Contracts;
 
 [ApiController]
 [Route("api/[controller]")]

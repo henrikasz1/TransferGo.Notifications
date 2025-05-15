@@ -1,8 +1,7 @@
-using TransferGo.Notifications.Application.Repositories;
-using TransferGo.Notifications.Application.Services.Notification;
-
 namespace TransferGo.Notifications.Application.Jobs;
 
+using Repositories;
+using Services.Notification;
 using Hangfire;
 
 public class NotificationBackgroundJob

@@ -1,20 +1,19 @@
-using TransferGo.Notifications.Application.Commands.SendNotification;
-using TransferGo.Notifications.Application.Mappings;
-using TransferGo.Notifications.Application.Repositories;
-using TransferGo.Notifications.Application.Services.Email;
-using TransferGo.Notifications.Application.Services.Notification;
-using TransferGo.Notifications.Application.Services.Options;
-using TransferGo.Notifications.Application.Services.Sms;
-using TransferGo.Notifications.Infrastructure.Persistence;
-using TransferGo.Notifications.Infrastructure.Persistence.Repositories;
-using TransferGo.Notifications.Infrastructure.Services.Email;
-using TransferGo.Notifications.Infrastructure.Services.Options;
-using TransferGo.Notifications.Infrastructure.Services.Sms;
-
 namespace TransferGo.Notifications.Extensions;
 
 using Hangfire;
 using Microsoft.EntityFrameworkCore;
+using Application.Commands.SendNotification;
+using Application.Mappings;
+using Application.Repositories;
+using Application.Services.Email;
+using Application.Services.Notification;
+using Application.Services.Options;
+using Application.Services.Sms;
+using Infrastructure.Persistence;
+using Infrastructure.Persistence.Repositories;
+using Infrastructure.Services.Email;
+using Infrastructure.Services.Options;
+using Infrastructure.Services.Sms;
 
 public static class ServiceCollectionExtensions
 {

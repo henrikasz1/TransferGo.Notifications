@@ -1,10 +1,9 @@
-using TransferGo.Notifications.Application.Queries.GetUserNotifications.Contracts;
-using TransferGo.Notifications.Domain.Entities;
-
 namespace TransferGo.Notifications.Application.Mappings;
 
 using AutoMapper;
 using Common.Enums;
+using Queries.GetUserNotifications.Contracts;
+using Domain.Entities;
 
 public class UserNotificationsMappingProfile : Profile
 {

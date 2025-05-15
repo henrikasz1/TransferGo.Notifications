@@ -1,7 +1,6 @@
-using TransferGo.Notifications.Infrastructure.Services.Options;
-
 namespace TransferGo.Notifications.Infrastructure.Services.Email;
 
+using Options;
 using System.Net.Http.Headers;
 using Microsoft.Extensions.Options;
 using TransferGo.Notifications.Application.Services.Email;

@@ -1,13 +1,13 @@
-using TransferGo.Notifications.Application.Commands.SendNotification.Contracts;
-using TransferGo.Notifications.Application.Jobs;
-using TransferGo.Notifications.Application.Repositories;
-using TransferGo.Notifications.Domain.Entities;
-using TransferGo.Notifications.Domain.Enums;
-
 namespace TransferGo.Notifications.Application.Commands.SendNotification;
 
 using Hangfire;
 using MediatR;
+using Contracts;
+using Jobs;
+using Repositories;
+using Domain.Entities;
+using Domain.Enums;
+
 
 public class SendNotificationCommandHandler : IRequestHandler<SendNotificationCommand>
 {

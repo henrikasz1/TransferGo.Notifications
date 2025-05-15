@@ -1,6 +1,6 @@
-using TransferGo.Notifications.Domain.Enums;
-
 namespace TransferGo.Notifications.Domain.Entities;
+
+using Enums;
 
 public class Notification
 {

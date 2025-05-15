@@ -13,6 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\src\TransferGo.Notifications.Application\TransferGo.Notifications.Application.csproj" />
       <ProjectReference Include="..\src\TransferGo.Notifications.Application\TransferGo.Notifications.Application.csproj" />
       <ProjectReference Include="..\src\TransferGo.Notifications.Infrastructure\TransferGo.Notifications.Infrastructure.csproj" />
       <ProjectReference Include="..\TransferGo.Notifications.Tests.Common\TransferGo.Notifications.Tests.Common.csproj" />

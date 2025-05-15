@@ -1,7 +1,6 @@
-using TransferGo.Notifications.Infrastructure.Services.Options;
-
 namespace TransferGo.Notifications.Infrastructure.Services.Email;
 
+using Options;
 using Microsoft.Extensions.Options;
 using SendGrid;
 using SendGrid.Helpers.Mail;

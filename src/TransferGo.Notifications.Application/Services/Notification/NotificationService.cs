@@ -1,7 +1,3 @@
-using TransferGo.Notifications.Application.Services.Options;
-using TransferGo.Notifications.Application.Services.Sms;
-using TransferGo.Notifications.Domain.Enums;
-
 namespace TransferGo.Notifications.Application.Services.Notification;
 
 using Microsoft.Extensions.Options;
@@ -9,6 +5,9 @@ using Polly;
 using Polly.Retry;
 using Repositories;
 using Email;
+using Options;
+using Sms;
+using Domain.Enums;
 
 public class NotificationService : INotificationService
 {

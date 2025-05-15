@@ -1,7 +1,6 @@
-using TransferGo.Notifications.Application.Common.Enums;
-
 namespace TransferGo.Notifications.Application.Commands.SendNotification.Contracts;
 
+using Common.Enums;
 using MediatR;
 
 public class SendNotificationCommand : IRequest

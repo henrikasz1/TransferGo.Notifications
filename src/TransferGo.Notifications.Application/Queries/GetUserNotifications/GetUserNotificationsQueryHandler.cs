@@ -1,10 +1,9 @@
-using TransferGo.Notifications.Application.Repositories;
-
 namespace TransferGo.Notifications.Application.Queries.GetUserNotifications;
 
 using AutoMapper;
 using MediatR;
 using Contracts;
+using Repositories;
 
 public class GetUserNotificationsQueryHandler : IRequestHandler<GetUserNotificationsQuery, List<UserNotification>>
 {

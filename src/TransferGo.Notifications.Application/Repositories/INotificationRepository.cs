@@ -1,6 +1,6 @@
-using TransferGo.Notifications.Domain.Entities;
-
 namespace TransferGo.Notifications.Application.Repositories;
+
+using Domain.Entities;
 
 public interface INotificationRepository
 {

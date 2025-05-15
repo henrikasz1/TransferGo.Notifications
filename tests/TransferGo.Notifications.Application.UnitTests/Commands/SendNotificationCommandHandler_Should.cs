@@ -1,10 +1,9 @@
-using TransferGo.Notifications.Application.Commands.SendNotification;
-using TransferGo.Notifications.Application.Commands.SendNotification.Contracts;
-using TransferGo.Notifications.Application.Repositories;
-using TransferGo.Notifications.Domain.Entities;
-
 namespace TransferGo.Notifications.UnitTests.Commands;
 
+using TransferGo.Notifications.Application.Commands.SendNotification;
+using TransferGo.Notifications.Application.Commands.SendNotification.Contracts;
+using Application.Repositories;
+using Domain.Entities;
 using AutoFixture.Xunit2;
 using Hangfire;
 using Moq;
