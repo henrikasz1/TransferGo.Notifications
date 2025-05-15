@@ -1,19 +1,20 @@
-using Hangfire;
-using Microsoft.EntityFrameworkCore;
-using TranferGo.Notifications.Application.Commands.SendNotification;
-using TranferGo.Notifications.Application.Mappings;
-using TranferGo.Notifications.Application.Repositories;
-using TranferGo.Notifications.Application.Services.Email;
-using TranferGo.Notifications.Application.Services.Notification;
-using TranferGo.Notifications.Application.Services.Options;
-using TranferGo.Notifications.Application.Services.Sms;
-using TranferGo.Notifications.Infrastructure.Persistence;
-using TranferGo.Notifications.Infrastructure.Persistence.Repositories;
-using TranferGo.Notifications.Infrastructure.Services.Email;
-using TranferGo.Notifications.Infrastructure.Services.Options;
-using TranferGo.Notifications.Infrastructure.Services.Sms;
+using TransferGo.Notifications.Application.Commands.SendNotification;
+using TransferGo.Notifications.Application.Mappings;
+using TransferGo.Notifications.Application.Repositories;
+using TransferGo.Notifications.Application.Services.Email;
+using TransferGo.Notifications.Application.Services.Notification;
+using TransferGo.Notifications.Application.Services.Options;
+using TransferGo.Notifications.Application.Services.Sms;
+using TransferGo.Notifications.Infrastructure.Persistence;
+using TransferGo.Notifications.Infrastructure.Persistence.Repositories;
+using TransferGo.Notifications.Infrastructure.Services.Email;
+using TransferGo.Notifications.Infrastructure.Services.Options;
+using TransferGo.Notifications.Infrastructure.Services.Sms;
 
 namespace TransferGo.Notifications.Extensions;
+
+using Hangfire;
+using Microsoft.EntityFrameworkCore;
 
 public static class ServiceCollectionExtensions
 {
@@ -56,7 +57,7 @@ public static class ServiceCollectionExtensions
         
         services.AddScoped<IEmailService, SendGridEmailService>();
         services.AddScoped<IEmailService, MailgunEmailService>();
-        
+
         return services;
     }
 }

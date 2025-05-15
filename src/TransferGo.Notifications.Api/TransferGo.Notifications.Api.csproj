@@ -17,8 +17,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TranferGo.Notifications.Application\TranferGo.Notifications.Application.csproj" />
-      <ProjectReference Include="..\TranferGo.Notifications.Infrastructure\TranferGo.Notifications.Infrastructure.csproj" />
+      <ProjectReference Include="..\TransferGo.Notifications.Application\TransferGo.Notifications.Application.csproj" />
+      <ProjectReference Include="..\TransferGo.Notifications.Infrastructure\TransferGo.Notifications.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

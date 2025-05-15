@@ -1,10 +1,11 @@
+using TransferGo.Notifications.Infrastructure.Persistence;
+
+namespace TransferGo.Notifications;
+
 using System.Text.Json.Serialization;
 using Hangfire;
 using Microsoft.EntityFrameworkCore;
-using TranferGo.Notifications.Infrastructure.Persistence;
-using TransferGo.Notifications.Extensions;
-
-namespace TransferGo.Notifications;
+using Extensions;
 
 public class Startup
 {
