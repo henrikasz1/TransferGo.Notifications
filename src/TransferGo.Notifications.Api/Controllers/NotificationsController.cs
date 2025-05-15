@@ -6,7 +6,7 @@ using Application.Commands.SendNotification.Contracts;
 using Application.Queries.GetUserNotifications.Contracts;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/notifications")]
 public class NotificationsController : ControllerBase
 {
     private readonly IMediator _mediator;
